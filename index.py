@@ -31,3 +31,4 @@ def upImg():
 def imgDownload():
     str = session.get('new_name')
     return str
+
