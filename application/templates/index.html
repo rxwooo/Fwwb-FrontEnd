@@ -48,54 +48,7 @@
     <!--//my-Style-->
 
     <!--my-Script-->
-    <script>
-        function postDownloadImage() {
-            var xmlhttp;
-            if (window.XMLHttpRequest) {
-                //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
-                xmlhttp = new XMLHttpRequest();
-            }
-            else {
-                // IE6, IE5 浏览器执行代码
-                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-            }
-            xmlhttp.onreadystatechange = function () {
-                if (xmlhttp.readyState == 4 && xmlhttp.status == (200 || 304)) {
-                    imgDown = document.getElementById("download-image");
-                    imgDown.src = xmlhttp.responseText;
-                }
-            }
-            xmlhttp.open("GET", "/imgDownload", true);
-            xmlhttp.send();
-            imgAdaptive(document.getElementById("download-image"));
-        }
-
-        function imgAdaptive(obj) {
-            parent = obj.parentNode;
-            imgW = obj.width;
-            imgH = obj.height;
-            imgP = imgW / imgH;
-            parW = parent.offsetWidth;
-            parH = parent.offsetHeight;
-            parP = parW / parH;
-            if (imgP > parP) {
-                obj.style.width = "100%";
-                obj.style.height = "auto";
-            }
-            else {
-                obj.style.width = "auto";
-                obj.style.height = "100%";
-            }
-        }
-
-
-        window.onload = function () {
-            var img = document.getElementsByClassName("adaptiveImg");
-            for (var i = 0; i < img.length; i++) {
-               imgAdaptive(img[i]); 
-            }
-        }
-    </script>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
     <!--//my-Script-->
 </head>
 
@@ -136,7 +89,7 @@
         <!-- Page Content Holder -->
         <div id="content">
             <!-- top-bar -->
-            <nav class="navbar navbar-default mb-xl-5 mb-4">
+            <nav class="navbar navbar-default mb-xl-5 mb-4" style="margin-bottom: 1.5rem !important;">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
@@ -184,7 +137,7 @@
                     <!-- img-select -->
                     <div class="outer-w3-agile col-xl display-block picture-block" style="height: 400px;">
                         <div class="picture-container">
-                            <img src="test.jpg" id="upload-image" class="row-xl-9 adaptiveImg"  onload="imgAdaptive(this)">
+                            <img src="static/test.jpg" id="upload-image" class="row-xl-9 adaptiveImg"  onload="imgAdaptive(this)">
                         </div>
                         <div class="upbutton-container row">
                             <a href="#" class="button-a picture-block-button"><span>选择文件</span>
@@ -200,7 +153,7 @@
                     <!-- img-download -->
                     <div class="outer-w3-agile col-xl ml-xl-3 mt-xl-0 mt-3 display-block picture-block" style="height: 400px;">
                         <div class="picture-container">
-                            <img src="default_processed.png" id="download-image" class="adaptiveImg" onload="imgAdaptive(this)">
+                            <img src="static/default_processed.png" id="download-image" class="adaptiveImg" onload="imgAdaptive(this)">
                         </div>
                         <button class="picture-block-button" onclick="postDownloadImage()" type="button">获取检测结果</button>
                     </div>
@@ -240,60 +193,10 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="resultTable">
                         <tr>
                             <th class="text-nowrap" scope="row">#1</th>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                        </tr>
-                        <tr>
-                            <th class="text-nowrap" scope="row">#1</th>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                        </tr>
-                        <tr>
-                            <th class="text-nowrap" scope="row">#1</th>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                        </tr>
-                        <tr>
-                            <th class="text-nowrap" scope="row">#1</th>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                        </tr>
-                        <tr>
-                            <th class="text-nowrap" scope="row">#1</th>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                        </tr>
-                        <tr>
-                            <th class="text-nowrap" scope="row">#1</th>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
+                            <td colspan="6" class="text-center">No result.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -301,7 +204,7 @@
             <!--// Result-Table -->
 
             <!-- Copyright -->
-            <div class="copyright-w3layouts py-xl-3 py-2 mt-xl-5 mt-4 text-center display-block">
+            <div class="copyright-w3layouts py-xl-3 py-2 mt-xl-5 mt-4 text-center display-block"  style="margin-top: 1.5rem !important;">
                 <p>Copyright &copy; 2022.No Bug No Code -- rxwooo.</p>
             </div>
             <!--// Copyright -->
@@ -364,42 +267,6 @@
     <!-- Js for bootstrap working-->
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
     <!-- //Js for bootstrap working -->
-
-    <!-- Image upload-->
-    <script>
-        function fileSelect(obj) {
-            var imgFile = obj.files[0];
-            var fr = new FileReader();
-            fr.onload = function () {
-                document.getElementById('upload-image').src = fr.result;
-            };
-            fr.readAsDataURL(imgFile);
-            imgDown(obj);
-            document.getElementById("download-image").src = "default_processed.png";
-        }
-
-
-        function imgPost() {
-            var fd = new FormData();
-            var img = document.getElementById("imageSelect").files[0];
-            fd.append("image", img);
-            $.ajax({
-                url: '/upImg',
-                type: 'POST',
-                cache: false,
-                data: fd,
-                processData: false,
-                contentType: false,
-                success: function (data) {
-                    alert("upload success");
-                },
-                error: function (data) {
-                    alert("upload failed");
-                }
-            })
-        }
-    </script>
-    <!-- //Image upload-->
 
 </body>
 
