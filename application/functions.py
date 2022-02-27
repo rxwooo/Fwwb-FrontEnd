@@ -61,3 +61,4 @@ def process(imageId, database):
         re.pop("class_id")
     database.session.commit()
     return json.dumps(reJson)
+
