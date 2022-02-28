@@ -34,15 +34,14 @@ def generateTimeName():
     styleTime = time.strftime("%Y_%m_%d_%H_%M_%S", timeArray)
     return styleTime
 
-def dbAddImage(imageName, database, savePath):
-    image = Image(imagename = imageName, path = savePath)
+def dbAddImage(imageName, database, savePath, user):
+    image = Image(imagename = imageName, path = savePath, userid = user)
     database.session.add(image)
     database.session.commit()
     return image.id
     
 def process(imageId, database):
-    path = Image.query.get_or_404(imageId).path
-    print(path)
+    path = Image.query.get_or_404(int(imageId)).path
     reJson = copy.deepcopy(testJson)
     reJson["imageSrc"] = path
     for re in reJson["result"]:

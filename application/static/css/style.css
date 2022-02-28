@@ -1253,7 +1253,7 @@ a.error-w3l-btn:hover,
 button.error-w3l-btn:hover {
 	text-transform: uppercase;
 	color: #fff;
-	background: #4c6ef5;
+	background: #0086eb;
 	border: none;
 }
 
@@ -1328,12 +1328,12 @@ h1.paragraph-agileits-w3layouts a:hover {
 ------------------------------------------*/
 
 .bg-page {
-	background: #4c6ef5;
+	background: #0086eb;
 	min-height: 100vh;
 }
 
 .form-body-w3-agile.text-center {
-	background: #fff;
+	background: #d8ebff;
 	padding: 3em 5em;
 	-webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.34);
 	-moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.34);
@@ -1352,7 +1352,7 @@ h1.paragraph-agileits-w3layouts a:hover {
 	background-color: transparent;
 	background-clip: padding-box;
 	border: 1px solid #e6e6e6;
-	border-radius: 0px;
+	border-radius: 10px;
 }
 
 .form-body-w3-agile label,

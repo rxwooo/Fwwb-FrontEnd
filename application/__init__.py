@@ -1,6 +1,8 @@
 import os, sys
+from unicodedata import name
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
 
 WIN = sys.platform.startswith('win')
 if WIN:
@@ -15,5 +17,14 @@ app.config['SECRET_KEY'] = 'dev'
 app.config['JSON_AS_ASCII'] = False
 
 db = SQLAlchemy(app)
+
+login_manager = LoginManager(app)
+login_manager.login_view = 'login'
+
+@login_manager.user_loader 
+def load_user(user_id):
+    from application.models import User
+    user = User.query.get(int(user_id))
+    return user
 
 from application import views, commands

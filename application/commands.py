@@ -8,7 +8,13 @@ def initdb(drop):
     if drop:
         db.drop_all()
     db.create_all()
-    click.echo("Initialized database.")
+    
+    user = User(name="admin")
+    user.set_password("admin")
+    db.session.add(user)
+    db.session.commit()
+    
+    click.echo("Database initialization done.")
 
 @app.cli.command()
 def addclass():

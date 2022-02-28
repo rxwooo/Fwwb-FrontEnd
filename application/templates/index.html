@@ -47,6 +47,62 @@
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <!--//my-Style-->
 
+    <!-- Required common Js -->
+    <!--
+        <script src="{{ url_for('static', filename='js/jquery-2.2.3.min.js') }}"></script>
+    -->
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js">
+    </script>
+    <!-- //Required common Js -->
+
+    <!-- loading-gif Js -->
+    <script src="{{ url_for('static', filename='js/modernizr.js') }}"></script>
+    <script>
+        // Wait for window load
+        $(window).load(function () {
+            // Animate loader off screen
+            $(".se-pre-con").fadeOut("slow");;
+        });
+    </script>
+    <!--// loading-gif Js -->
+
+    <!-- Sidebar-nav Js -->
+    <script>
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+    <!--// Sidebar-nav Js -->
+
+
+    <!-- profile-widget-dropdown js-->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <!--// profile-widget-dropdown js-->
+
+    <!-- dropdown nav -->
+    <script>
+        $(document).ready(function () {
+            $(".dropdown").hover(
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+                    $(this).toggleClass('open');
+                },
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+                    $(this).toggleClass('open');
+                }
+            );
+        });
+    </script>
+    <!-- //dropdown nav -->
+
+    <!-- Js for bootstrap working-->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <!-- //Js for bootstrap working -->
+
+
     <!--my-Script-->
     <script src="{{ url_for('static', filename='js/index.js') }}"></script>
     <!--//my-Script-->
@@ -111,12 +167,8 @@
                             </a>
                             <div class="dropdown-menu drop-3">
                                 <div class="profile d-flex mr-o">
-                                    <div class="profile-l align-self-center">
-                                        <img src="images/profile.jpg" class="img-fluid mb-3" alt="Responsive image">
-                                    </div>
                                     <div class="profile-r align-self-center">
-                                        <h3 class="sub-title-w3-agileits">Will Smith</h3>
-                                        <a href="mailto:info@example.com">info@example.com</a>
+                                        <h3 class="sub-title-w3-agileits">{{ current_user.name }}</h3>
                                     </div>
                                 </div>
                                 <a href="#" class="dropdown-item mt-3">
@@ -125,7 +177,7 @@
                                     </h4>
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="login.html">Logout</a>
+                                <a class="dropdown-item" href="/logout">Logout</a>
                             </div>
                         </li>
                     </ul>
@@ -137,7 +189,7 @@
                     <!-- img-select -->
                     <div class="outer-w3-agile col-xl display-block picture-block" style="height: 400px;">
                         <div class="picture-container">
-                            <img src="static/test.jpg" id="upload-image" class="row-xl-9 adaptiveImg"  onload="imgAdaptive(this)">
+                            <img src="static/test.jpg" id="upload-image" class="row-xl-9 adaptiveImg" onload="imgAdaptive(this)">
                         </div>
                         <div class="upbutton-container row">
                             <a href="#" class="button-a picture-block-button"><span>选择文件</span>
@@ -193,7 +245,7 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody id="resultTable">
+                    <tbody id="resultTable" style="min-width: 100%;">
                         <tr>
                             <th class="text-nowrap" scope="row">#1</th>
                             <td colspan="6" class="text-center">No result.</td>
@@ -212,61 +264,7 @@
     </div>
 
 
-    <!-- Required common Js -->
-    <!--
-        <script src="{{ url_for('static', filename='js/jquery-2.2.3.min.js') }}"></script>
-    -->
-    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js">
-    </script>
-    <!-- //Required common Js -->
-
-    <!-- loading-gif Js -->
-    <script src="{{ url_for('static', filename='js/modernizr.js') }}"></script>
-    <script>
-        //paste this code under head tag or in a seperate js file.
-        // Wait for window load
-        $(window).load(function () {
-            // Animate loader off screen
-            $(".se-pre-con").fadeOut("slow");;
-        });
-    </script>
-    <!--// loading-gif Js -->
-
-    <!-- Sidebar-nav Js -->
-    <script>
-        $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-            });
-        });
-    </script>
-    <!--// Sidebar-nav Js -->
-
-
-    <!-- profile-widget-dropdown js-->
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    <!--// profile-widget-dropdown js-->
-
-    <!-- dropdown nav -->
-    <script>
-        $(document).ready(function () {
-            $(".dropdown").hover(
-                function () {
-                    $('.dropdown-menu', this).stop(true, true).slideDown("fast");
-                    $(this).toggleClass('open');
-                },
-                function () {
-                    $('.dropdown-menu', this).stop(true, true).slideUp("fast");
-                    $(this).toggleClass('open');
-                }
-            );
-        });
-    </script>
-    <!-- //dropdown nav -->
-
-    <!-- Js for bootstrap working-->
-    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-    <!-- //Js for bootstrap working -->
+    
 
 </body>
 
