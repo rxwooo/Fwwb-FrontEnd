@@ -1,6 +1,5 @@
 import time, json, copy
-from flask import jsonify
-from application.models import Image, Result, Class
+from application.models import Image, Result, Class, User
 
 testJson = {
     "len": 2,
@@ -61,3 +60,38 @@ def process(imageId, database):
     database.session.commit()
     return json.dumps(reJson)
 
+def detailReTab(userid, database):
+    
+    queryid = [userid]
+    print(userid)
+    if(userid == 1):
+        queryid = database.session.query(User.id)
+    
+    results = []
+    images = database.session.query(Image.id, Image.path, Image.userid).filter(Image.userid.in_(queryid))
+    for img in images:
+        imgResult = {}
+        reQuery = database.session.query(Result.classid, Result.min_x, Result.max_x, Result.min_y, Result.max_y).filter(Result.id == img[0])
+        imgResult["len"] = reQuery.count()
+        imgResult["src"] = img[1];
+        imgResult["user"] = database.session.query(User.name).filter(User.id == img[2]).first()[0]
+        result = []
+        for re in reQuery:
+            reObj = {}
+            reObj["class_name"] = Class.query.get_or_404(re[0]).classname
+            reObj["min_x"] = re[1]
+            reObj["max_x"] = re[2]
+            reObj["min_y"] = re[3]
+            reObj["max_y"] = re[4]
+            result.append(reObj)
+        imgResult["result"] = copy.deepcopy(result)
+        results.append(imgResult)
+    
+    length = len(results)
+    reTab = {}
+    reTab["length"] = length
+    reTab["results"] = results
+    
+    return reTab
+    
+    

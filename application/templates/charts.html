@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Charts</title>
+    <!-- Meta Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- //Meta Tags -->
+
+    <!-- Style-sheets -->
+    <!-- Bootstrap Css -->
+    <link href="static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- Bootstrap Css -->
+    <!-- Common Css -->
+    <link href="static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!--// Common Css -->
+    <!-- Nav Css -->
+    <link rel="stylesheet" href="static/css/style4.css">
+    <!--// Nav Css -->
+    <!-- Fontawesome Css -->
+    <link href="static/css/fontawesome-all.css" rel="stylesheet">
+    <!--// Fontawesome Css -->
+    <!--// Style-sheets -->
+
+    <!--web-fonts-->
+    <link href="http://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <!--//web-fonts-->
+
+    <link rel="stylesheet" href="static/css/charts.css">
+    <script src="static/js/charts.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h1>
+                    <a href="index.html">Intel-fpga</a>
+                </h1>
+                <span>Intel</span>
+            </div>
+            <div class="profile-bg"></div>
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="index.html">
+                        <i class="fas fa-th-large"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="{{url_for('charts')}}">
+                        <i class="fas fa-chart-pie"></i>
+                        Charts
+                    </a>
+                </li>
+                <li>
+                    <a href="grids.html">
+                        <i class="fas fa-th"></i>
+                        Grid Layouts
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+            <!-- top-bar -->
+            <nav class="navbar navbar-default mb-xl-5 mb-4" style="margin-bottom: 1.5rem !important;">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                    <!-- Search-from -->
+                    <form action="#" method="post" class="form-inline mx-auto search-form">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                            required="">
+                        <button class="btn btn-style my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                    <!--// Search-from -->
+                    <ul class="top-icons-agileits-w3layouts float-right">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="far fa-user"></i>
+                            </a>
+                            <div class="dropdown-menu drop-3">
+                                <div class="profile d-flex mr-o">
+                                    <div class="profile-r align-self-center">
+                                        <h3 class="sub-title-w3-agileits">{{ current_user.name }}</h3>
+                                    </div>
+                                </div>
+                                <a href="#" class="dropdown-item mt-3">
+                                    <h4>
+                                        <i class="far fa-user mr-3"></i>My Profile
+                                    </h4>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/logout">Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!--// top-bar -->
+
+            <!-- main-heading -->
+            <h2 class="main-title-w3layouts mb-2 text-center">Charts</h2>
+            <!--// main-heading -->
+
+            <!-- Circle Bar chart -->
+            <div class="outer-w3-agile mt-3 display-block">
+
+                <h4 class="tittle-w3-agileits mb-4">Circle Bar Chart</h4>
+                <div class="c-bars d-lg-flex justify-content-around">
+                    <div class="circle-1-w3">
+                        <svg class="circular-bars" x="0px" y="0px" xml:space="preserve">
+
+                            <g id="circleBarCharts">
+
+                                <!-- Web Circle Bar Chart -->
+                                <g id="circleBar-web-group">
+                                    <text id="circleBar-web-text" opacity="0" x="200" y="143">WEB</text>
+                                    <g id="circleBar-web-chart" transform="translate(215,150)"></g>
+                                    <clippath id="circleBar-web-clipPath">
+                                        <rect id="circleBar-web-clipLabels" x="205" y="215" width="180" height="0">
+                                        </rect>
+                                    </clippath>
+                                    <g id="circleBar-web-legend" clip-path="url(#circleBar-web-clipPath)">
+                                        <text id="circleBar-web-values" transform="translate(222,225)"></text>
+                                        <text id="circleBar-web-labels" transform="translate(277,225)"></text>
+                                    </g>
+                                </g>
+                                <!-- END: Web Circle Bar Chart -->
+
+                            </g>
+
+                        </svg>
+
+                    </div>
+                    <div class="circle-2-w3">
+                        <svg class="circular-bars" x="0px" y="0px" xml:space="preserve">
+
+                            <g id="circleBarCharts">
+
+                                <!-- Mobile Circle Bar Chart -->
+                                <g id="circleBar-mobile-group">
+                                    <text id="circleBar-mobile-text" opacity="0" x="187" y="155">MOBILE</text>
+                                    <g id="circleBar-mobile-chart" transform="translate(215,150)"></g>
+                                    <clippath id="circleBar-mobile-clipPath">
+                                        <rect id="circleBar-mobile-clipLabels" x="205" y="215" width="150" height="0">
+                                        </rect>
+                                    </clippath>
+                                    <g id="circleBar-mobile-legend" clip-path="url(#circleBar-mobile-clipPath)">
+                                        <text id="circleBar-mobile-values" transform="translate(222,225)"></text>
+                                        <text id="circleBar-mobile-labels" transform="translate(277,225)"></text>
+                                    </g>
+                                </g>
+                                <!-- END: Mobile Circle Bar Chart -->
+                            </g>
+
+                        </svg>
+
+
+                    </div>
+                </div>
+            </div>
+            <!--// Circle Bar chart -->
+
+            <!-- Simple-chart -->
+            <div class="outer-w3-agile mt-3 display-block" id="resultTable">
+                
+            </div>
+            <!--// Simple-chart -->
+
+            <!-- Copyright -->
+            <div class="copyright-w3layouts py-xl-3 py-2 mt-xl-5 mt-4 text-center">
+                <p>Copyright &copy; 2021.Company name All rights reserved.</p>
+            </div>
+            <!--// Copyright -->
+        </div>
+    </div>
+
+
+    <!-- Required common Js -->
+    <script src='static/js/jquery-2.2.3.min.js'></script>
+    <!-- //Required common Js -->
+
+    <!-- Sidebar-nav Js -->
+    <script>
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+    <!--// Sidebar-nav Js -->
+
+    <!-- cirular-bar Js -->
+    <script src='static/js/circle_bar.js'></script>
+
+
+    <!-- chart1 Js -->
+    <script src="static/js/chart1.js"></script>
+    <!--// chart1 Js -->
+
+    <!--// percentage-circles Js -->
+    <script src="static/js/percentage-circles.js"></script>
+    <!--// percentage-circles Js -->
+
+    <!-- dropdown nav -->
+    <script>
+        $(document).ready(function () {
+            $(".dropdown").hover(
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+                    $(this).toggleClass('open');
+                },
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+                    $(this).toggleClass('open');
+                }
+            );
+        });
+    </script>
+    <!-- //dropdown nav -->
+
+    <!-- Js for bootstrap working-->
+    <script src="static/js/bootstrap.min.js"></script>
+    <!-- //Js for bootstrap working -->
+
+</body>
+
+</html>

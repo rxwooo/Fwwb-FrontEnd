@@ -1,8 +1,8 @@
 import os
-from flask import session, render_template, send_from_directory, url_for, request, redirect, flash
+from flask import jsonify, session, render_template, send_from_directory, url_for, request, redirect, flash
 from flask_login import login_user, login_required, logout_user, current_user
 from application import db, app
-from application.functions import generateTimeName, dbAddImage, process
+from application.functions import generateTimeName, dbAddImage, process, detailReTab
 from application.models import User
 
 UPLOAD_PATH = os.path.join(os.path.dirname(__file__))
@@ -58,3 +58,13 @@ def logout():
     logout_user()
     flash('Goodbye.')
     return redirect(url_for('login'))
+
+@app.route('/charts', methods=["GET", "POST"])
+@login_required
+def charts():
+    if request.method == 'POST':
+        userid = current_user.id;
+        re = detailReTab(userid, db);
+        return jsonify(re)
+    
+    return render_template("charts.html")
