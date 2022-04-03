@@ -2,7 +2,7 @@ import os
 from flask import jsonify, session, render_template, send_from_directory, url_for, request, redirect, flash
 from flask_login import login_user, login_required, logout_user, current_user
 from application import db, app
-from application.functions import generateTimeName, dbAddImage, process, detailReTab
+from application.functions import generateTimeName, dbAddImage, process, detailReTab, getUserList, getDataAndDate
 from application.models import User
 
 UPLOAD_PATH = os.path.join(os.path.dirname(__file__))
@@ -68,3 +68,18 @@ def charts():
         return jsonify(re)
     
     return render_template("charts.html")
+
+@app.route('/grids', methods=["POST", "GET"])
+@login_required
+def grids():
+    if request.method == 'POST':
+        return jsonify(getUserList(current_user.id, db))
+
+    return render_template("grids.html")
+
+@app.route('/getGraphData', methods=["POST"])
+@login_required
+def getGraphData():
+    uname = request.get_data()
+    uname = str(uname, 'utf-8')
+    return jsonify(getDataAndDate(uname, db));

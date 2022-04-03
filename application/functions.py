@@ -1,4 +1,7 @@
 import time, json, copy
+from unicodedata import name
+
+from flask import redirect
 from application.models import Image, Result, Class, User
 
 testJson = {
@@ -63,7 +66,6 @@ def process(imageId, database):
 def detailReTab(userid, database):
     
     queryid = [userid]
-    print(userid)
     if(userid == 1):
         queryid = database.session.query(User.id)
     
@@ -93,5 +95,52 @@ def detailReTab(userid, database):
     reTab["results"] = results
     
     return reTab
+    
+    
+def getUserList(userid, database):
+    queryid = [userid]
+    if(userid == 1):
+        queryid = database.session.query(User.id)
+    
+    names = database.session.query(User.name).filter(User.id.in_(queryid)).all()
+    namelist = []
+    for i in names:
+        namelist.append(i[0])
+    
+    return {'namelist': namelist}
+
+def getDataAndDate(uname, database):
+    names = []
+    if(uname == "Select ALL"):
+        names = database.session.query(User.id).all()
+    else:
+        names = database.session.query(User.id).filter(User.name == uname)
+    uid = []
+    for i in names:
+        uid.append(i[0]);
+    
+    dateDict = {}
+    images = database.session.query(Image.imagename, Image.id).filter(Image.userid.in_(uid))
+    for i in images:
+        date = i[0];
+        dateArr = date.split('_')
+        dateStr = dateArr[0] + '/' + dateArr[1] + '/' + dateArr[2]
+        dateDict.setdefault(dateStr, [0, 0, 0, 0])
+        results = database.session.query(Result.classid).filter(Result.imageid == i[1])
+        for re in results:
+            dateDict[dateStr][re[0] - 1] += 1
+        
+   
+    reDict = {} 
+    reDict['date'] = list(dateDict.keys())
+    reDict["data"] = [[], [], [], []]
+    tempList = list(dateDict.values())
+    for i in tempList:
+        reDict["data"][0].append(i[0])
+        reDict["data"][1].append(i[1])
+        reDict["data"][2].append(i[2])
+        reDict["data"][3].append(i[3])
+    return reDict
+
     
     
