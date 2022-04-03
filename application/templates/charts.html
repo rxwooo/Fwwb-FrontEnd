@@ -38,8 +38,16 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <!--//web-fonts-->
 
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/dist/echarts.min.js"></script>
     <link rel="stylesheet" href="static/css/charts.css">
     <script src="static/js/charts.js"></script>
+
+    <script type="text/javascript">
+        document.getElementById('summary').onresize = function() {
+            echarts.init(document.getElementById("chartBar")).resize();
+            echarts.init(document.getElementById("chartPie")).resize();
+        }
+    </script>
 </head>
 
 <body>
@@ -85,13 +93,6 @@
                             <i class="fas fa-bars"></i>
                         </button>
                     </div>
-                    <!-- Search-from -->
-                    <form action="#" method="post" class="form-inline mx-auto search-form">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
-                            required="">
-                        <button class="btn btn-style my-2 my-sm-0" type="submit">Search</button>
-                    </form>
-                    <!--// Search-from -->
                     <ul class="top-icons-agileits-w3layouts float-right">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
@@ -129,7 +130,7 @@
                 <div class="container-fluid" style="margin: 0px;">
                     <div class="row">
                         <div id="chartBar" class="col-xl-6" style="height: 350px; background-color: white; padding: 0;"></div>
-                        <script>
+                        <!-- <script>
                             var barWidth = document.getElementById('summary').offsetWidth;
                             barWidth = document.getElementsByTagName('body')[0].offsetWidth < 667? barWidth - 30: (barWidth - 45)/2;
                             document.getElementById('chartBar').style.width = barWidth;
@@ -153,9 +154,9 @@
                               ]
                             };
                             option && mychart.setOption(option);
-                          </script>
+                          </script> -->
                         <div id="chartPie" class="col-xl-6 mt-xl-0 mt-3" style="height: 350px; background-color: white; padding: 0;"></div>
-                        <script>
+                        <!-- <script>
                             var pieWidth = document.getElementById('summary').offsetWidth;
                             pieWidth = document.getElementsByTagName('body')[0].offsetWidth < 667? pieWidth - 45: (pieWidth - 45)/2;
                             var mychart = echarts.init(document.getElementById("chartPie"), null, {height: 350, width: pieWidth});
@@ -174,7 +175,7 @@
                               ]
                             };
                             option && mychart.setOption(option);
-                          </script>
+                          </script> -->
                     </div>
                 </div>
             </div>
@@ -187,8 +188,8 @@
             <!--// Simple-chart -->
 
             <!-- Copyright -->
-            <div class="copyright-w3layouts py-xl-3 py-2 mt-xl-5 mt-4 text-center">
-                <p>Copyright &copy; 2021.Company name All rights reserved.</p>
+            <div class="copyright-w3layouts py-xl-3 py-2 mt-xl-5 mt-4 text-center display-block"  style="margin-top: 1.5rem !important;">
+                <p>Copyright &copy; 2022.No Bug No Code -- rxwooo.</p>
             </div>
             <!--// Copyright -->
         </div>

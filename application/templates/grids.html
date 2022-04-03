@@ -80,14 +80,13 @@
         <!-- Page Content Holder -->
         <div id="content">
             <!-- top-bar -->
-            <nav class="navbar navbar-default mb-xl-5 mb-4">
+            <nav class="navbar navbar-default mb-xl-5 mb-4" style="margin-bottom: 1.5rem !important;">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
                             <i class="fas fa-bars"></i>
                         </button>
                     </div>
-                    <!--// Search-from -->
                     <ul class="top-icons-agileits-w3layouts float-right">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
@@ -96,12 +95,8 @@
                             </a>
                             <div class="dropdown-menu drop-3">
                                 <div class="profile d-flex mr-o">
-                                    <div class="profile-l align-self-center">
-                                        <img src="images/profile.jpg" class="img-fluid mb-3" alt="Responsive image">
-                                    </div>
                                     <div class="profile-r align-self-center">
-                                        <h3 class="sub-title-w3-agileits">Will Smith</h3>
-                                        <a href="mailto:info@example.com">info@example.com</a>
+                                        <h3 class="sub-title-w3-agileits">{{ current_user.name }}</h3>
                                     </div>
                                 </div>
                                 <a href="#" class="dropdown-item mt-3">
@@ -110,7 +105,7 @@
                                     </h4>
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="login.html">Logout</a>
+                                <a class="dropdown-item" href="/logout">Logout</a>
                             </div>
                         </li>
                     </ul>
@@ -125,7 +120,7 @@
 
             <!-- Grids Content -->
 
-            <div class="outer-w3-agile mt-3" id="graphContainer">
+            <div class="outer-w3-agile mt-3 display-block" id="graphContainer">
                 <div id="selectBar">
                     <ul id="selectUL">
                         <!-- <li class="selectList" onclick="selectListChg(this)" style="background-color: #ffffff;">
@@ -151,8 +146,8 @@
 
 
             <!-- Copyright -->
-            <div class="copyright-w3layouts py-xl-3 py-2 mt-xl-5 mt-4 text-center">
-                <p>Copyright &copy; 2021.Company name All rights reserved.</p>
+            <div class="copyright-w3layouts py-xl-3 py-2 mt-xl-5 mt-4 text-center display-block"  style="margin-top: 1.5rem !important; ">
+                <p style="color: black;">Copyright &copy; 2022.No Bug No Code -- rxwooo.</p>
             </div>
             <!--// Copyright -->
         </div>

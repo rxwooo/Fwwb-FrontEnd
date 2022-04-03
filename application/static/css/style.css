@@ -35,8 +35,8 @@ h4,
 h5,
 h6 {
 	margin: 0;
-	font-family: 'Poiret One', cursive;
-	font-weight: 700;
+	/* font-family: 'Poiret One', cursive; */
+	font-family: 'Open Sans', sans-serif;
 }
 
 p {
@@ -130,7 +130,7 @@ h4.tittle-w3-agileits {
 	border: 1px solid #5d7cf7;
 	border-left: none;
 	border-right: none;
-	background: url(../images/menu1.jpg)no-repeat 0px 0px;
+	background: url(../images/menu1.jpg) no-repeat 0px 0px;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -561,7 +561,7 @@ ul.icon-navigation li a span {
 }
 
 ul.icon-navigation li a:hover {
-	border-left: 6px solid#d05942;
+	border-left: 6px solid #d05942;
 }
 
 li.menu.info {
@@ -1873,9 +1873,9 @@ ul.percentg-circles-w3ls .chart .figure {
 	form.form-inline.search-form {
 		justify-content: flex-end;
 	}
-	ul.top-icons-agileits-w3layouts {
+	/* ul.top-icons-agileits-w3layouts {
 		margin-top: 1.3em;
-	}
+	} */
 	.copyright-w3layouts p {
 		font-size: 13px;
 		padding: 0.5em 2em;
@@ -2071,10 +2071,10 @@ ul.percentg-circles-w3ls .chart .figure {
 		top: 20%;
 		padding: 0;
 	}
-	.navbar-header {
+	/* .navbar-header {
 		float: none;
 		margin-bottom: 1em;
-	}
+	} */
 	.search-form.form-inline .form-control {
 		width: 70%;
 		font-size: 13px;

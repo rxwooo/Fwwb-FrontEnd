@@ -1,3 +1,4 @@
+from msilib.schema import tables
 import time, json, copy
 from unicodedata import name
 
@@ -71,6 +72,7 @@ def detailReTab(userid, database):
     
     results = []
     images = database.session.query(Image.id, Image.path, Image.userid).filter(Image.userid.in_(queryid))
+    tableData = [0, 0, 0, 0]
     for img in images:
         imgResult = {}
         reQuery = database.session.query(Result.classid, Result.min_x, Result.max_x, Result.min_y, Result.max_y).filter(Result.id == img[0])
@@ -79,6 +81,7 @@ def detailReTab(userid, database):
         imgResult["user"] = database.session.query(User.name).filter(User.id == img[2]).first()[0]
         result = []
         for re in reQuery:
+            tableData[re[0] - 1] += 1
             reObj = {}
             reObj["class_name"] = Class.query.get_or_404(re[0]).classname
             reObj["min_x"] = re[1]
@@ -93,6 +96,7 @@ def detailReTab(userid, database):
     reTab = {}
     reTab["length"] = length
     reTab["results"] = results
+    reTab["data"] = tableData
     
     return reTab
     

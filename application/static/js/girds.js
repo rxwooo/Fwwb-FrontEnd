@@ -42,11 +42,8 @@ function selectListChg(obj) {
         processData: false,
         //contentType: "application/json",
         success: function (data) {
-            alert("upload success");
-            console.log(data);
         },
         error: function (data) {
-            alert("upload error")
         }
     }).responseJSON;
 }
@@ -83,10 +80,8 @@ function initGraph(uname) {
         processData: false,
         //contentType: "application/json",
         success: function (data) {
-            alert("upload success");
         },
         error: function (data) {
-            alert("upload error")
         }
     }).responseJSON;
 
